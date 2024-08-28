@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 
 # Load the trained model
-model2 = joblib.load(r'C:\Users\admin\Downloads\model2.pkl')
+model2 = joblib.load(r"C:\Users\91978\Downloads\model2.pkl")
 
 # Streamlit app title
 st.title("Telecom Churn Prediction")
