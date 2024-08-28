@@ -1,6 +1,6 @@
-streamlit
-numpy
-scikit-learn
-joblib
-pandas
-setuptools
+streamlit==1.34.0
+numpy==1.24.3
+scikit-learn==1.2.2
+joblib==1.2.0
+pandas==1.5.3
+setuptools==65.5.0
