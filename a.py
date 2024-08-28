@@ -1,20 +1,22 @@
 import streamlit as st
 import numpy as np
 import joblib
+import os
+import requests
 
-# Load the trained model
-# Define the URL of your model on GitHub
-model_url = 'https://github.com/Shreepranav06/Churn_Prediction/blob/main/model2.pkl'
+
+model_url = 'https://raw.githubusercontent.com/Shreepranav06/Churn_Prediction/main/model2.pkl'
 
 # Download the model
-model2 = 'model2.pkl'
+model_path = 'model2.pkl'
 if not os.path.exists(model_path):
     response = requests.get(model_url)
     with open(model_path, 'wb') as f:
         f.write(response.content)
 
-# Load the model
-model = load_model(model2)
+# Load the model using joblib
+model2 = joblib.load(model_path)
+
 # Streamlit app title
 st.title("Telecom Churn Prediction")
 
