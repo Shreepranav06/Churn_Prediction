@@ -1,12 +1,38 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import load_model
+import requests
 import joblib
+from tensorflow.keras.models import load_model
+import os
 
-# Load the trained model and scaler
-model = load_model(r"C:\Users\91978\Downloads\mode.h5")
-scaler = joblib.load(r"C:\Users\91978\Downloads\scale.pkl")
+# URLs of the model and scaler
+model_url = 'https://github.com/Shreepranav06/Churn_Prediction/raw/main/mode.h5'
+scaler_url = 'https://github.com/Shreepranav06/Churn_Prediction/raw/main/scale.pkl'
+
+# Paths to save the downloaded files
+model_path = 'model.h5'
+scaler_path = 'scaler.pkl'
+
+# Function to download files
+def download_file(url, file_path):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(file_path, 'wb') as file:
+            file.write(response.content)
+    else:
+        st.error(f"Failed to download file from {url}")
+        st.stop()
+
+# Download model and scaler if not already downloaded
+if not os.path.exists(model_path):
+    download_file(model_url, model_path)
+if not os.path.exists(scaler_path):
+    download_file(scaler_url, scaler_path)
+
+# Load the model and scaler
+model = load_model(model_path)
+scaler = joblib.load(scaler_path)
 
 # Streamlit app title
 st.title("Telecom Churn Prediction")
