@@ -9,10 +9,6 @@ model_url = 'https://raw.githubusercontent.com/Shreepranav06/Churn_Prediction/ma
 
 # Download the model
 model_path = 'model2.pkl'
-if not os.path.exists(model_path):
-    response = requests.get(model_url)
-    with open(model_path, 'wb') as f:
-        f.write(response.content)
 
 # Load the model using joblib
 model2 = joblib.load(model_path)
