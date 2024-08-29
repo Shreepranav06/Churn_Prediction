@@ -11,8 +11,8 @@ model_url = 'https://github.com/Shreepranav06/Churn_Prediction/raw/main/mode.h5'
 scaler_url = 'https://github.com/Shreepranav06/Churn_Prediction/raw/main/scale.pkl'
 
 # Paths to save the downloaded files
-model_path = 'model.h5'
-scaler_path = 'scaler.pkl'
+model_path = 'mode.h5'
+scaler_path = 'scale.pkl'
 
 # Function to download files
 def download_file(url, file_path):
